@@ -10,7 +10,14 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="field">
+    <%= f.label :title %> <br>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :caption %> <br>
+    <%= f.text_area :caption, size: "40x15", class: "form-control" %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
