@@ -12,16 +12,19 @@ class ImagesController < ApplicationController
 
   # GET /images/new
   def new
+    # @user = current_user
     @image = Image.new
   end
 
   # GET /images/1/edit
   def edit
+    # @user = current_user
   end
 
   # POST /images
   def create
-    @image = Image.new(image_params)
+    @image = current_user.images.new(image_params)
+    # @image = Image.new(image_params)
 
     if @image.save
       redirect_to @image, notice: 'Image was successfully created.'
@@ -41,6 +44,9 @@ class ImagesController < ApplicationController
 
   # DELETE /images/1
   def destroy
+    @image.asset = nil
+    @image.save
+
     @image.destroy
     redirect_to images_url, notice: 'Image was successfully destroyed.'
   end
@@ -53,6 +59,7 @@ class ImagesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def image_params
-      params[:image]
+      params.require(:image).permit(:caption, :title, :asset )
+
     end
 end
