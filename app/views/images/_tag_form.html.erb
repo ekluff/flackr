@@ -1,0 +1,10 @@
+<%= form_for @image, remote:true, class: "tag-form", html: { id: "tag-form" } do |f| %>
+  <div class='form-group'>
+
+    <%= f.label :tag_list %>
+    <%= f.text_field :tag_list, class: "form-control", id: "add-tag-content" %>
+    <br>
+    <%= button_tag 'add', {type: 'submit', id: "add-tag", class: 'btn btn-primary btn-xs'} %>
+  </div>
+
+<% end %>
