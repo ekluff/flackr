@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require lightbox
+//= require images
 //= require_tree .
 
 var ready;

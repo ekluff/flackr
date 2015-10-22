@@ -1,6 +1,27 @@
 // Place all the styles related to the images controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.btn-tag-add {
-  display: inline-block;
+$bootstrap-blue: #337ab7;
+
+
+.add-image-form {
+  .form-file-field-overlay {
+    position: relative;
+    border: 2px solid $bootstrap-blue;
+    border-radius: 4px;
+    text-align: center;
+    #file-upload-span {
+      font-size: 10rem;
+    }
+  }
+  .form-file-field {
+    padding: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+  }
+
 }

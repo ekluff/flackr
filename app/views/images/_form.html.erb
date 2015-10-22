@@ -1,3 +1,5 @@
+<div class='add-image-form col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12'>
+  <h1>New Image</h1>
 <%= form_for @image, html: { multipart: true } do |f| %>
   <% if @image.errors.any? %>
   <div id="error_explanation">
@@ -18,11 +20,17 @@
     <%= f.label :caption %> <br>
     <%= f.text_area :caption, size: "40x15", class: "form-control" %>
   </div>
+  <br>
   <div class="field">
-    <%= f.file_field :asset, class: "form-control" %>
+    <div class='form-file-field-overlay'>
+      <span class="glyphicon glyphicon-upload file-upload-glyphicon" id="file-upload-span"></span>
+      <%= f.file_field :asset, class: "form-control form-file-field" %>
+    </div>
   </div>
+  <br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit(:class => 'btn btn-primary btn-sm') %>
   </div>
 
 <% end %>
+</div>

@@ -33,7 +33,7 @@
 
 <div id="image_gallery" class="justified-gallery">
   <% @images.each do |img| %>
-    <%= link_to image_tag(img.asset.url(:medium)), img.asset.url, "data-lightbox" => "gallery", "data-title" => img.caption %>
+    <%= link_to image_tag(img.asset.url(:medium)), img.asset.url, "data-lightbox" => "gallery", "data-title" => "<a href=/images/#{img.id}>#{img.title}</a>" %>
   <% end %>
   <%= link_to image_tag('/imgs/plus.png'), new_image_path %>
 </div>
