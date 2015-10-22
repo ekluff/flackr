@@ -12,6 +12,26 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
 //= require bootstrap-sprockets
+//= require lightbox
+//= require_tree .
+
+var ready;
+
+ready = function() {
+  // $('#tag-form').submit(function(event) {
+    // console.log('logged');
+    // $('.list-group').append('<li class="list-group-item">' + $('#tag-form-field').val() + '</li>');
+    // $('#tag-form-field').val('');
+    // event.preventDefault();
+  // });
+
+  $('#image_gallery').justifiedGallery({
+    rowHeight: 200
+  });
+};
+
+
+$(document).ready(ready);
+
+$(document).on('page:load', ready);
