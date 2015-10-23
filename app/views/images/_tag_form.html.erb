@@ -1,10 +1,16 @@
-<%= form_for @image, remote:true, class: "tag-form", html: { id: "tag-form" } do |f| %>
+<%= form_tag({controller: "images", action: "update"}, method: "patch", id: "tag-form", class: "tag-form" ) do %>
   <div class='form-group'>
 
-    <%= f.label :tag_list %>
-    <%= f.text_field :tag_list, class: "form-control", id: "add-tag-content" %>
+    <%= label_tag :tag %>
+    <%= text_field_tag :tag, nil, id: "tag-form-field" %>
     <br>
-    <%= button_tag 'add', {type: 'submit', id: "add-tag", class: 'btn btn-primary btn-xs'} %>
+    <%= button_tag 'add', {type: 'submit', id: "add-tag", class: 'btn btn-primary btn-xs btn-tag-add'} %>
   </div>
 
 <% end %>
+
+<ul class="list-group" id="tags-list">
+  <% @image.tags.each do |tag| %>
+  <li class="list-group-item"><%= tag.name %> </li>
+  <% end %>
+</ul>

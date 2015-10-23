@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Images</h1>
+<!-- <h1>Listing Images</h1>
 
 <table>
   <thead>
@@ -9,10 +9,10 @@
     </tr>
   </thead>
 
-  <tbody>
+   <tbody>
     <% @images.each do |image| %>
       <tr>
-        <td><%= image_tag image.asset.url(:thumb) %></td>
+        <td><%= image_tag image.asset.url(:medium) %></td>
         <td><%= link_to 'Show', image %></td>
 
         <% if current_user == image.user %>
@@ -24,8 +24,19 @@
   </tbody>
 </table>
 
-<br>
+<br> -->
 
 <% if user_signed_in? %>
   <%= link_to 'New Image', new_image_path %>
 <% end %>
+
+
+<div id="image_gallery" class="justified-gallery">
+  <% @images.each do |img| %>
+    <%= link_to image_tag(img.asset.url(:medium)), img.asset.url, "data-lightbox" => "gallery", "data-title" =>
+                                                                                                "<a href=/images/#{img.id}>#{img.title}</a><br>
+                                                                                                <p>#{img.caption}</p>" %>
+  <% end %>
+  <%= link_to image_tag('/imgs/plus.png'), new_image_path %>
+</div>
+<!-- '<span class="glyphicon glyphicon-plus">'.html_safe, -->

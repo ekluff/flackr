@@ -2,6 +2,17 @@
 
 <%= image_tag @image.asset.url(:large) %>
 
+<% if @image.tags.any? %>
+  <h4>Tags:</h4>
+  <ul>
+    <% @image.tags.each do |t| %>
+      <li>
+        <%= t.name %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <% if @image.user == current_user %>
   <%= link_to 'Edit', edit_image_path(@image) %> |
 <% end %>

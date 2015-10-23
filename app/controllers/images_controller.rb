@@ -35,10 +35,20 @@ class ImagesController < ApplicationController
 
   # PATCH/PUT /images/1
   def update
-    if @image.update(image_params)
-      redirect_to @image, notice: 'Image was successfully updated.'
+    # binding.pry
+    if params[:tag] != nil
+      @image.tag_list.add(params[:tag])
+      if @image.save
+        render :edit
+      else
+        redirect_to @image
+      end
     else
-      render :edit
+      if @image.update(image_params)
+        redirect_to @image, notice: 'Image was successfully updated.'
+      else
+        render :edit
+      end
     end
   end
 
@@ -59,7 +69,6 @@ class ImagesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def image_params
-      params.require(:image).permit(:caption, :title, :asset, :tag_list )
-
+      params.require(:image).permit(:caption, :title, :asset, :tag_list, :image )
     end
 end
