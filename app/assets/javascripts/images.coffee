@@ -1,5 +1,5 @@
 ready = ->
-    # alert 'ayeeeee'
+    alert 'ayeeeee'
   $('#tag-form').submit (event) ->
     event.preventDefault()
     return
